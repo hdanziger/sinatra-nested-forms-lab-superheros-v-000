@@ -12,17 +12,17 @@ class App < Sinatra::Base
     #   erb :team
     # end
 
-    post '/superheroes' do
+    post '/teams' do
       @team_name = params[:team][:name]
       @team_motto = params[:team][:motto]
       @hero_name = []
       @hero_power = []
       @hero_bio = []
-      @teams = params[:team][:members]
-      @teams.each do |hero, detail|
-        @hero_name << detail[:name]
-        @hero_power << detail[:power]
-        @hero_bio << detail[:bio]
+      @teams = params[:team][:heroes]
+      @teams.each do |hero|
+        @hero_name << hero[:name]
+        @hero_power << hero[:power]
+        @hero_bio << hero[:bio]
 
       erb :team
     end
